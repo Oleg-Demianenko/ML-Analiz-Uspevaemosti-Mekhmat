@@ -1,0 +1,4 @@
+/scripts/**/*.exe
+/scripts/**/*.pdb
+/scripts/**/*.pcu
+/scripts/**/*.dll
