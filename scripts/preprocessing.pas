@@ -1,6 +1,6 @@
 ﻿uses MLABC, DataFrameABCCore;
 
-const markColumnNames := ['экзамен', 'добор 1', 'добор 2', 'пересдача 1', 'пересдача 2', 'бонус'];
+const markColumnNames = ['экзамен', 'добор 1', 'добор 2', 'пересдача 1', 'пересдача 2', 'бонус'];
 
 begin
   var df := DataFrame.FromCsv('..\data\УспеваемостьМехмат2017-2025.csv');
@@ -14,6 +14,5 @@ begin
   df := df.Filter(r -> markColumnNames.Any(name -> r.Int(name) > 0));
   Println($'Кол-во записей после очистки: {df.RowCount()}');
 
-  
   
 end.
