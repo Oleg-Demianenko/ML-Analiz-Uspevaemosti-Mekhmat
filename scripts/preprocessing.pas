@@ -19,6 +19,13 @@ begin
   // Удаляем студентов без id
   df := df.Filter(row -> row.IsValid('id студента'));
   
+  // Удаляем "Пример специальности"
+  df := df.Filter(row -> row.Str('название специальности') <> 'Пример специальности');
+  
+  // Заменяем отметки баллов -1 на 0
+  foreach col: string in examScoreColumns.Concat(termScoreColumns) do
+    df.MapIntColumnData(col, x -> if x = -1 then result := 0);
+  
   // Добавляем столбец с общим баллом студента по дисциплине:
   // сумма баллов за работу в семестре и доборы + максимальный балл за все попытки сдачи экзамена
   df := df.WithColumnInt('общий балл', row -> termScoreColumns.Sum(name -> row.Int(name)) + 
