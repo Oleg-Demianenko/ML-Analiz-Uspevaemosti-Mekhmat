@@ -1,4 +1,6 @@
 ﻿{$zerobasedstrings}
+uses DTOS;
+
 uses MLABC, DataFrameABCCore, System.Text.RegularExpressions;
 
 const markColumnNames = ['экзамен', 'добор 1', 'добор 2', 'пересдача 1', 'пересдача 2', 'бонус'];
